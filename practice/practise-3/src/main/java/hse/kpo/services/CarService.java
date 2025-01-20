@@ -7,6 +7,8 @@ import hse.kpo.interfaces.ICarProvider;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class CarService implements ICarProvider {
 
@@ -17,7 +19,7 @@ public class CarService implements ICarProvider {
     @Override
     public Car takeCar(Customer customer) {
 
-        var filteredCars = cars.stream().filter(car -> car.isCompatible(customer)).toList();
+        var filteredCars = cars.stream().filter(car -> car.isCompatible(customer)).collect(Collectors.toList());
 
         var firstCar = filteredCars.stream().findFirst();
 
@@ -35,5 +37,10 @@ public class CarService implements ICarProvider {
         );
 
         cars.add(car); // добавляем автомобиль
+    }
+
+    @Override
+    public String toString() {
+        return "CarService{" + "cars=" + cars + "}";
     }
 }

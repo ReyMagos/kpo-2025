@@ -18,4 +18,9 @@ public class CustomerStorage implements ICustomerProvider {
     {
         customers.add(customer); // просто добавляем покупателя в список
     }
+
+    @Override
+    public String toString() {
+        return "CustomerStorage{" + "customers=" + customers + "}";
+    }
 }
